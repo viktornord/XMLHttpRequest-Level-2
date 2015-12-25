@@ -7,6 +7,7 @@ Firstly install all required dependencies
 In order to do this run this command in the root of project directory:
 
  ```npm install```
+
 After installing all dependencies run the project from using this command
 
 ```npm start```
