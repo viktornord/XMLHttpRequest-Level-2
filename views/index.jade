@@ -1,0 +1,30 @@
+extends layout
+block content
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+    h1= title
+    div.well.col-md-4
+        .col-md-24
+            div.form-group
+                input.form-control.sendQuery(data-get-func="getString" type="button" value="get a simple text")
+            div.form-group
+                input.form-control.sendQuery(data-get-func="getImageArrayBuffer" type="button" value="get an image as array buffer")
+            div.form-group
+                input.form-control.sendQuery(data-get-func="getImageBlob" type="button" value="get an image as blob")
+            .well
+                div.form-group
+                    input#fileurl.form-control(type="text" placeholder="paste file url ...")
+                div.form-group
+                    input#filename.form-control(type="text" placeholder="type filename ...")
+                div.form-group
+                    input.form-control.sendQuery(data-get-func="postImage" type="button" value="post an image")
+    div.well.col-md-4
+        #image.col-md-24
+            img(src="images/flower1.jpg")
+            img(src="images/flower2.jpg")
+            img(src="images/flower3.jpg")
+    div#text
+    script(src="js/main.js")
+    script(src="js/get-a-plain-text.js")
+    script(src="js/get-an-image-array-buffer.js")
+    script(src="js/get-an-image-blob.js")
+    script(src="js/post-an-image.js")
