@@ -28,31 +28,3 @@ controller = (controller => {
 
     return controller;
 })(controller || {});
-
-
-function sendXHR(options) {
-    var xhr = new XMLHttpRequest();
-    xhr.open(options.method, options.url, options.async);
-    return new Promise((resolve, reject) => {
-        xhr.onload = function (event) {
-            resolve(this);
-        };
-        xhr.onerror = function() {
-            reject(this);
-        };
-        xhr.send(options.data);
-    });
-}
-
-//Example of the xhr wrapped with promise
-
-sendXHR({
-    method: 'GET',
-    url: '/get-string',
-    async: true,
-    data: null
-}).then((data) => {
-    console.log(data.responseText);
-}).catch((err) => {
-    console.log(err);
-});
