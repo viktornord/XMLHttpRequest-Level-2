@@ -1,4 +1,3 @@
-var uIntBuffArr;
 
 controller = (controller => {
     controller.getString = function() {
@@ -28,3 +27,11 @@ controller = (controller => {
 
     return controller;
 })(controller || {});
+
+// You can also do get query by using fetch
+// This is much simpler, isn't it?
+
+fetch('/get-string')
+    .then(response => response.text())
+    .then(responseText => console.log(responseText))
+    .catch(err => console.log(err));

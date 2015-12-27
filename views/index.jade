@@ -17,6 +17,9 @@ block content
                     input#filename.form-control(type="text" placeholder="type filename ...")
                 div.form-group
                     input.form-control.sendQuery(data-get-func="postImage" type="button" value="post an image")
+                div.form-group
+                    label progress
+                    progress#progressbar.form-control(min=0 max=100 value=0) 0% complete
     div.well.col-md-4
         #image.col-md-24
             img(src="images/flower1.jpg")

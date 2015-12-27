@@ -3,6 +3,8 @@
  */
 
 controller = (controller => {
+    var progressBar = document.querySelector('#progressbar');
+
     controller.postImage = function() {
         var xhr = new XMLHttpRequest();
         xhr.responseType = 'arraybuffer';
@@ -21,12 +23,22 @@ controller = (controller => {
                 var formData = new FormData();
                 formData.append('ownFile', new File([this.response], document.querySelector('#filename').value));
                 this.open('POST', '/post-image', true);
+                this.onprogress = handleProgress(this);
                 this.onload = function(event) {
                     alert('Image have been sent!');
                 };
                 this.send(formData);
             }
         }).bind(context)
+    }
+
+    function handleProgress(context) {
+        return (function(event) {
+            if (event.lengthComputable) {
+                progressBar.value = (event.loaded / event.total) * 100;
+                progressBar.textContent = progressBar.value;
+            }
+        }).bind(context);
     }
 
     function handleError(context) {

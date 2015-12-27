@@ -30,3 +30,11 @@ controller = ((controller) => {
 
     return controller;
 })(controller || {});
+
+// Again You can do get query by using fetch
+
+
+fetch('/get-image')
+    .then(response => response.arrayBuffer())
+    .then(responseBody => console.log(responseBody))
+    .catch(err => console.log(err));
