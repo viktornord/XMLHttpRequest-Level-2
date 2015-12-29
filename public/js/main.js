@@ -12,6 +12,18 @@ var controller = {
         imgTag.style.width = '150px';
         imgTag.src = window.URL.createObjectURL(data);
         document.querySelector('#image').appendChild(imgTag);
+    },
+    insertAudio(data) {
+        var sourceTag = document.createElement('source');
+        sourceTag.onload = function(e) {
+            console.log(this.src);
+            window.URL.revokeObjectURL(this.src);
+        };
+        sourceTag.src = window.URL.createObjectURL(data);
+        var audioTag = document.createElement('audio');
+        audioTag.setAttribute('controls', '');
+        audioTag.appendChild(sourceTag);
+        document.querySelector('#audio').appendChild(audioTag);
     }
 };
 

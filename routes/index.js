@@ -17,7 +17,19 @@ router.get('/get-string', (req, res, next) => {
 
 router.get('/get-image', (req, res, next) => {
     new Promise((resolve, reject) => {
-        fs.readFile('mushroom.jpg', (err, fileContents) => {
+        fs.readFile('storage/mushroom.jpg', (err, fileContents) => {
+           err ? reject(err) : resolve(fileContents);
+        });
+    }).then(data => {
+        res.send(data);
+    }).catch(err => {
+        console.log(err);
+        res.end();
+    });
+});
+router.get('/get-audio', (req, res, next) => {
+    new Promise((resolve, reject) => {
+        fs.readFile('storage/beep-02.mp3', (err, fileContents) => {
            err ? reject(err) : resolve(fileContents);
         });
     }).then(data => {

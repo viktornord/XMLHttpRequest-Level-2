@@ -10,6 +10,8 @@ block content
                 input.form-control.sendQuery(data-get-func="getImageArrayBuffer" type="button" value="get an image as array buffer")
             div.form-group
                 input.form-control.sendQuery(data-get-func="getImageBlob" type="button" value="get an image as blob")
+            div.form-group
+                input.form-control.sendQuery(data-get-func="getAudioBlob" type="button" value="get an audio as blob")
             .well
                 div.form-group
                     input#fileurl.form-control(type="text" placeholder="paste file url ...")
@@ -26,9 +28,11 @@ block content
             img(src="images/flower2.jpg")
             img(src="images/flower3.jpg")
     div#text
+    div#audio
     script(src="js/main.js")
     script(src="js/get-a-plain-text.js")
     script(src="js/get-an-image-array-buffer.js")
     script(src="js/get-an-image-blob.js")
+    script(src="js/get-an-audio-blob.js")
     script(src="js/post-an-image.js")
     script(src="js/xhr-promise.js")
