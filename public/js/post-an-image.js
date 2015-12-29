@@ -22,6 +22,7 @@ controller = (controller => {
             if (this.readyState === 4 && this.status === 200) {
                 var formData = new FormData();
                 formData.append('ownFile', new File([this.response], document.querySelector('#filename').value));
+                formData.append('foo', 'bar');
                 this.open('POST', '/post-image', true);
                 this.onprogress = handleProgress(this);
                 this.onload = function(event) {

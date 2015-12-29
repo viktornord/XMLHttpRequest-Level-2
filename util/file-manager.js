@@ -10,7 +10,7 @@ module.exports = {
 
 
 function init() {
-    fs.exists('/etc/passwd', function (exists) {
+    fs.exists('uploads', function (exists) {
         !exists && fs.mkdirSync('uploads')
     });
 }

@@ -43,7 +43,11 @@ router.get('/get-audio', (req, res, next) => {
 router.post('/post-image', (req, res, next) => {
     var busboy = new Busboy({ headers: req.headers });
     busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+        console.log(`File: ${fieldname}, name: ${filename}`);
         file.pipe(fs.createWriteStream(`uploads/${filename}-${Date.now()}.jpg`));
+    });
+    busboy.on('field', function(fieldname, val, fieldnameTruncated, valTruncated, encoding, mimetype) {
+        console.log(`Field: ${fieldname}, value: ${val}`);
     });
     busboy.on('finish', function() {
         console.log('Done parsing form!');
